@@ -140,7 +140,7 @@ class ScanReceiver(DefaultDelegate):
             elif tag in [8, 9]:
                 try:
                     tdata.append([ desc, yellow( val.decode('utf-8') ) ])
-                except UnicodeEncodeError:
+                except (UnicodeEncodeError, AttributeError):
                     tdata.append([ desc, yellow( repr(val) ) ])
             else:
                 tdata.append([ desc, repr(val) ])
